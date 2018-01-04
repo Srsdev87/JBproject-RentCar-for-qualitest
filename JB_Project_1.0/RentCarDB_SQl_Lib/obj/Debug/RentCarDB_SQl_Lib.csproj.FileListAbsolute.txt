@@ -1,0 +1,10 @@
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\RentCarDB_SQl_Lib.dll.config
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\RentCarDB_SQl_Lib.dll
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\RentCarDB_SQl_Lib.pdb
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\EntityFramework.dll
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\EntityFramework.SqlServer.dll
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\EntityFramework.xml
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\bin\Debug\EntityFramework.SqlServer.xml
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\obj\Debug\RentCarDB_SQl_Lib.dll
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\obj\Debug\RentCarDB_SQl_Lib.pdb
+G:\JB_Project_1.0\RentCarDB_SQl_Lib\obj\Debug\RentCarDB_SQl_Lib.csprojResolveAssemblyReference.cache

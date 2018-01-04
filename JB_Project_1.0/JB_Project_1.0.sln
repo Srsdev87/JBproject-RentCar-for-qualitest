@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCarServer_api", "RentCarServer_api\RentCarServer_api.csproj", "{9B4DF097-7A20-47C6-9E32-867B14B8693D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "JB_Project_1.1", "..\JB_Project_1.1\", "{9DC91A6A-301A-45EA-811D-E4C9EC9C87B0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		ProjectReferences = "{9b4df097-7a20-47c6-9e32-867b14b8693d}|RentCarServer_api.dll;{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}|RentCarDB_SQl_Lib.dll;{13FE9161-6F8E-4D56-B289-77B4C69F59C7}|BLL.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62821"
+		Debug.AspNetCompiler.PhysicalPath = "..\JB_Project_1.1\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62821\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62821"
+		Release.AspNetCompiler.PhysicalPath = "..\JB_Project_1.1\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62821\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62821"
+		SlnRelativePath = "..\JB_Project_1.1\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCarDB_SQl_Lib", "RentCarDB_SQl_Lib\RentCarDB_SQl_Lib.csproj", "{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{13FE9161-6F8E-4D56-B289-77B4C69F59C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B4DF097-7A20-47C6-9E32-867B14B8693D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4DF097-7A20-47C6-9E32-867B14B8693D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4DF097-7A20-47C6-9E32-867B14B8693D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4DF097-7A20-47C6-9E32-867B14B8693D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC91A6A-301A-45EA-811D-E4C9EC9C87B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC91A6A-301A-45EA-811D-E4C9EC9C87B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC91A6A-301A-45EA-811D-E4C9EC9C87B0}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC91A6A-301A-45EA-811D-E4C9EC9C87B0}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFABAFE7-8ADF-4F9F-8CE0-E5161544EDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FE9161-6F8E-4D56-B289-77B4C69F59C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FE9161-6F8E-4D56-B289-77B4C69F59C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FE9161-6F8E-4D56-B289-77B4C69F59C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FE9161-6F8E-4D56-B289-77B4C69F59C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

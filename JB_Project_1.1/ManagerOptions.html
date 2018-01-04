@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ManagerOptions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="Style/indexStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="JSlogic/managerController.js"></script>
+    <script src="JSlogic/indexJS.js"></script>
+    <style>
+        .vStyle  {
+            margin: 0px;
+        }
+    </style>
+
+</head>
+
+
+
+
+<body ng-app="managerModule" >
+
+    <nav class="navbar navbar-inverse" ng-controller="navControl" ng-init="checkCookie()">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand col-sm-logo col-logo" href="#"><img class="col-sm-logo" src="images/logo.png" style="padding: 0%;" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://rentcar.sergeyprsv.com/index.html#">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right login">
+                    <img ng-hide="logimg" class="userlogin" src="{{pic}}" />
+                    <li class="{{class}} navigation" ng-mouseover="pcMode()">
+                        <span class="{{class}} navigation">
+                            <a style="color: white;text-decoration: none" href="{{logref}}"><span class="{{glyphicon}}" ng-mouseover="pcMode()"></span>{{loginbody}}</a>
+                            <a class="MobilenavMenu" ng-click="" ng-hide="set">&nbsp;> Settings</a>
+                            <a class="MobilenavMenu" ng-click="logOut()" ng-hide="log">&nbsp;> Log-Out</a>
+                        </span>
+                        <div class="dropdown-content" ng-hide="hidedropmenu">
+                            <a href="#" ng-click="Settings()">Settings</a>
+                            <a href="#" ng-click="logOut()">Log-Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      
+    </nav><!--Navigation Bar-->
+
+<div class="container-fluid mainDiv text-center">
+
+
+<div class="col-sm-mobile col-12 carouselcontrol text-left" >
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+            <div class="item active ">
+                <img src="/images/1.jpg" alt="Image" style="width: 100%; height: auto;">
+                <div class="carousel-caption">
+                    <h1 class="textSizingMob">
+                        Rent your car now<br />
+                        And enjoy your best ever trip with RentCar.
+                    </h1>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="/images/2.jpg" alt="Image" style="width: 100%; height: auto;">
+                <div class="carousel-caption">
+                    <h3 class="textSizingMob">Enjoy best Prices on market<br />We offer a 100% money-back guarantee within 60 days of payment.</h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="/images/3.jpg" alt="Image" style="width: 100%; height: auto;">
+                <div class="carousel-caption">
+                    <h3 class="textSizingMob">Enjoy full insurance <br />Free of charge!</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div><!--Carousel Site Header-->
+
+<div class="container" ng-controller="contactControler">
+
+    <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#ContactTrigger" >Contacts</button>
+    <div id="ContactTrigger" class="collapse col-12">
+                
+        <div class="col-5 col-sm-mobile" style=" float: left;">
+            <div class="form-group">
+                <form  name="contactForm">
+                    <div class="{{classmodel1}} vStyle">
+                        <input type="text" name="department" ng-change="vModel1(contactForm.department.$valid)" class="form-control col-12" placeholder="Department"  ng-model="contDep"  required>
+                        <span class="{{spanmodel1}}"></span>
+                    </div>
+                    <div class="{{classmodel2}} vStyle">
+                        <input type="text" name="contactname" ng-change="vModel2(contactForm.contactname.$valid)" class="form-control col-12" placeholder="Contact name"  ng-model="contName" required>
+                        <span class="{{spanmodel2}}"></span>
+                    </div>
+                    <div class="{{classmodel3}} vStyle">
+                        <input type="number" name="tel" ng-change="vModel3(contactForm.tel.$valid)" class="form-control col-12" placeholder="Tel"  ng-model="contTel" required>
+                        <span class="{{spanmodel3}} vStyle"></span>
+                    </div>
+                    <div class="{{classmodel4}} vStyle">
+                        <input type="number" name="fax" ng-change="vModel4(contactForm.fax.$valid)" class="form-control col-12" placeholder="Fax"  ng-model="contFax" required>
+                        <span class="{{spanmodel4}} "></span>
+                    </div>
+                    <div class="{{classmodel5}} vStyle">
+                        <input type="email" name="mail" ng-change="vModel5(contactForm.mail.$valid)" class="form-control col-12" placeholder="Mail"  ng-model="contMail" required>
+                        <span class="{{spanmodel5}} "></span>
+                    </div>
+                    <input type="button" value="Add new" class="btn btn-primary" ng-click="AddContact(contDep,contName,contTel,contFax,contMail,contactForm.department.$valid,contactForm.contactname.$valid,contactForm.tel.$valid,contactForm.fax.$valid,contactForm.mail.$valid)" />
+                    <input type="button" value="Clear" class="btn btn-primary" ng-click="clearTable()" />
+                </form>
+            </div>
+        </div>
+
+        <div class="col-7 col-sm-mobile" style=" float: right;">
+            <div class="col-sm-mobile AdsMDiv col-12 " id="contact" style="max-height: 300px; overflow:auto">
+
+                <table class="addressAD">
+                    <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Contact name</th>
+                        <th>Tel</th>
+                        <th>Fax</th>
+                        <th>Mail</th>
+                    </tr>
+                    </thead>
+                    <tbody class="hideMobile" ng-repeat="recipient in mailRecipients">
+                    <tr ng-click="editContact(recipient.Department,recipient.ContactName,recipient.Tel,recipient.Fax,recipient.Mail)">
+                        <th>{{recipient.Department}}</th>
+                        <th>{{recipient.ContactName}}</th>
+                        <th>{{recipient.Tel}}</th>
+                        <th>{{recipient.Fax}}</th>
+                        <th>{{recipient.Mail}}</th>
+                        <th><input type="button" value="Delete" class="btn btn-primary" ng-click="DeleteContactById(recipient.Id,recipient.ContactName)"/></th>
+                        <th><input type="button" value="Update" class="btn btn-success" ng-click="UpdateContactDetails(recipient.Id,contDep,contName,contTel,contFax,contMail,contactForm.department.$valid,contactForm.contactname.$valid,contactForm.tel.$valid,contactForm.fax.$valid,contactForm.mail.$valid)" /></th>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div><!--Contacts management-->
+<div class="container" ng-controller="branchesControler">
+    <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#branchTrigger">Branches</button>
+    <div id="branchTrigger" class="collapse col-12 col-sm-mobile">
+
+        <div class="col-5 col-sm-mobile" style=" float: left;">
+            <div class="form-group">
+                <form name="branchForm">
+                    <div class="{{classmodel6}} vStyle">
+                        <input type="text"  name="name" ng-change="vModel6(branchForm.name.$valid)" class="form-control col-12" placeholder="Branch name" ng-model="brName"  required>
+                        <span class="{{spanmodel6}}"></span>
+                    </div>
+                    <div class="{{classmodel7}} vStyle">
+                        <input type="text" name="address" ng-change="vModel7(branchForm.address.$valid)" class="form-control col-12" placeholder="Address" ng-model="brAddress" required>
+                        <span class="{{spanmodel7}}"></span>
+                    </div>
+                    <div class="{{classmodel8}} vStyle">
+                        <input type="text"  name="lat" ng-change="vModel8(branchForm.lat.$valid)" id="lat" class="form-control col-12" placeholder="Latitude" ng-model="brLat" required>
+                        <span class="{{spanmodel8}}"></span>
+                    </div>
+                    <div class="{{classmodel9}} vStyle">
+                        <input type="text" name="lng" ng-change="vModel9(branchForm.lng.$valid)" id="lng" class="form-control col-12" placeholder="Longitude" ng-model="brLng" required>
+                        <span class="{{spanmodel9}}"></span>
+                    </div>
+                    <div class="{{classmodel10}} vStyle">
+                        <input type="text" name="status" ng-change="vModel10(branchForm.status.$valid)" class="form-control col-12" placeholder="Status" ng-model="brStat" required>
+                        <span class="{{spanmodel10}}"></span>
+                    </div>
+                    <input type="button" value="Add new" class="btn btn-primary" ng-click="addBranch(brName,brAddress,brLat,brLng,brStat,
+                                   branchForm.name.$valid,branchForm.address.$valid,branchForm.lat.$valid,branchForm.lng.$valid,branchForm.status.$valid)" />
+                    <input type="button" value="Clear" class="btn btn-primary" ng-click="clearTable()" />
+                </form>
+            </div>
+        </div>
+
+        <div class="col-7 col-sm-mobile" style=" float: right;">
+            <div class="col-sm-mobile AdsMDiv col-12 " id="contact" style="max-height: 300px; overflow:auto">
+
+                <table class="addressAD col-sm-mobile">
+                    <thead>
+                    <tr>
+                        <th>Branch name</th>
+                        <th>Address</th>
+                        <th >Latitude</th>
+                        <th >Longitude</th>
+                        <th>Status</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="hideMobile" ng-repeat="thisbranch in thisBranches">
+                    <tr ng-click="editBranch(thisbranch.branches,thisbranch.address,thisbranch.latitude,thisbranch.longitude,thisbranch.status)">
+                        <th>{{thisbranch.branches}}</th>
+                        <th>{{thisbranch.address}}</th>
+                        <th>{{thisbranch.latitude}}</th>
+                        <th>{{thisbranch.longitude}}</th>
+                        <th ng-style="StatusStyle">{{thisbranch.status}}</th>                        
+                        <th><input type="button" value="Delete" class="btn btn-primary" ng-click="RemoveBranch(thisbranch.id,thisbranch.branches)" /></th>
+                        <th><input type="button" value="Update" class="btn btn-success" ng-click="UpdateBranch(thisbranch.id,brName,brAddress,brLat,brLng,brStat,
+                                           branchForm.name.$valid,branchForm.address.$valid,branchForm.lat.$valid,branchForm.lng.$valid,branchForm.status.$valid)"  /></th>
+                              
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+           
+        <div id="map" class="col-sm-mobile  col-12" style="background: transparent;">
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATzgtUZ525p0_678FHfmrw9hLWWm1YDIM&callback=initMap">
+            </script>
+
+        </div>
+
+    </div>
+</div><!--Branches management-->
+<div class="container" ng-controller="usersControler">
+    <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#UserTrigger">Users</button>
+    <div id="UserTrigger" class="collapse col-12">
+
+        <div class="col-5 col-sm-mobile" style=" float: left;">
+            <div class="form-group">
+                <form name="userForm">
+                    <input type="file" id="fileUpload" class="form-control col-12" placeholder="Picture" ng-model="usrPic" />
+                    <div class="{{classmodel11}} vStyle">
+                        <input type="text" name="fname" ng-change="vModel11(userForm.fname.$valid)" class="form-control col-12" placeholder="Full name" ng-model="usrFName" required/>
+                        <span class="{{spanmodel11}}"></span>
+                    </div>
+                    <div class="{{classmodel12}} vStyle">
+                        <input type="text" name="uname" ng-change="vModel12(userForm.uname.$valid)" class="form-control col-12" placeholder="User name" ng-model="usrUname" required/>
+                        <span class="{{spanmodel12}}"></span>
+                    </div>
+                    <div class="{{classmodel13}} vStyle">
+                        <input type="text" name="date" ng-change="vModel13(userForm.date.$valid)" class="form-control col-12" placeholder="Birth date" ng-model="usrBdate" required/>
+                        <span class="{{spanmodel13}}"></span>
+                    </div>
+                    <select class="form-control" name="sel1" id="sel1" ng-model="usrGen">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                    <div class="{{classmodel14}} vStyle">
+                        <input type="text" name="pass" ng-change="vModel14(userForm.pass.$valid)" class="form-control col-12" placeholder="Password" ng-model="usrPass" required/>
+                        <span class="{{spanmodel14}}"></span>
+                    </div>
+                    <div class="{{classmodel15}} vStyle">
+                        <input type="email" name="mail" ng-change="vModel15(userForm.mail.$valid)" class="form-control col-12" placeholder="Email" ng-model="usrMail" required/>
+                        <span class="{{spanmodel15}}"></span>
+                    </div>
+                    <select class="form-control" name="sel1" id="sel2" ng-model="IsAdmin">
+                        <option>false</option>
+                        <option>true</option>
+                       
+                    </select>
+                    <input type="button" value="Add new" id="btnUploadFile" class="btn btn-primary" ng-click="addUser(usrPic,usrFName,usrUname,usrBdate,usrGen,usrPass,usrMail,IsAdmin,
+                                   userForm.fname.$valid,userForm.uname.$valid,userForm.date.$valid,userForm.pass.$valid,userForm.mail.$valid)" />
+                    <input type="button" value="Clear" class="btn btn-primary" ng-click="clearTable()" />
+                </form>
+            </div>
+        </div>
+
+        <div class="col-7 col-sm-mobile" style=" float: right;">
+            <div class="col-sm-mobile AdsMDiv col-12 " id="contact" style="max-height: 300px; overflow:auto">
+
+                <table class="addressAD">
+                    <thead>
+                    <tr>
+                        <th>Picture*</th>
+                        <th>Full name</th>
+                        <th>User name</th>
+                        <th>Birth date</th>
+                        <th>Gender</th>                    
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Admin</th>
+                    </tr>
+                    </thead>
+                    <tbody class="hideMobile" ng-repeat="user in thisUsers">
+                    <tr ng-click="editBranch(user.Picture,user.FullName,user.UserName,user.BirthDate,user.Gender,user.Password,user.Email,user.IsAdmin)">
+                        <th><img src="{{user.Picture}}" alt="pic" style="width: 50px; height: auto"/></th>
+                            
+                        <th>{{user.FullName}}</th>
+                        <th>{{user.UserName}}</th>
+                        <th>{{user.BirthDate}}</th>
+                        <th>{{user.Gender}}</th>
+                        <th>{{user.Password}}</th>
+                        <th>{{user.Email}}</th>
+                        <th>{{user.IsAdmin}}</th>
+                        <th><input type="button" value="Delete" class="btn btn-primary" ng-click="RemoveUser(user.Id,user.UserName)" /></th>
+                        <th><input type="button" value="Update" id="fileUpDate" class="btn btn-success" ng-click="UpdateUser(user.Id,usrPic,usrFName,usrUname,usrBdate,usrGen,usrPass,usrMail,IsAdmin,
+                                           userForm.fname.$valid,userForm.uname.$valid,userForm.date.$valid,userForm.pass.$valid,userForm.mail.$valid)" /></th>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+           
+
+    </div>
+</div><!--Users management-->
+<div class="container" ng-controller="vehiclesControler">
+    <button  type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#FleetTrigger">Vehicles Fleet</button>
+    <div id="FleetTrigger" class="collapse col-12"  >
+               
+        <div class="col-2 col-sm-mobile" style=" float: left;">
+            <div class="form-group">
+                <form name="fleetForm">
+                    <input type="file" id="fileUpload2"  class="form-control col-12" placeholder="Picture" ng-model="carPic" />
+                  
+                    <div class="{{classmodel16}} vStyle">
+                        <input type="number" name="licenum" ng-change="vModel16(fleetForm.licenum.$valid)" class="form-control col-12" placeholder="LicenseNumber" ng-model="carLisNum" required/>
+                        <span class="{{spanmodel16}}"></span>
+                    </div>
+                    <div class="{{classmodel17}} vStyle">
+                        <input type="text" name="manufac" ng-change="vModel17(fleetForm.manufac.$valid)" class="form-control col-12" placeholder="Manufacturer" ng-model="carManfc" required/>
+                        <span class="{{spanmodel17}}"></span>
+                    </div>
+                    
+                    <select class="form-control" name="category" id="selcategory" ng-model="carCategory">
+                        <option>Mini</option>
+                        <option>Economy</option>
+                        <option>Compact</option>
+                        <option>Family</option>
+                        <option>Luxury</option>
+                        <option>Van/Mini Van</option>
+                        <option>SUV 4x4</option>
+                        <option>Cabrio exclusive</option>
+                    </select>
+
+                    <div class="{{classmodel18}} vStyle">
+                        <input type="text" name="cmodel" ng-change="vModel18(fleetForm.cmodel.$valid)" class="form-control col-12" placeholder="Model" ng-model="carModel" required/>
+                        <span class="{{spanmodel18}}"></span>
+                    </div>
+
+                    <select class="form-control" name="gear" id="selgear" ng-model="carGear">
+                        <option>Automatic</option>
+                        <option>Manual</option>
+                        <option>Robotic</option>
+                        <option>DSG</option>
+                    </select>
+
+                    <div class="{{classmodel19}} vStyle">
+                        <input type="number" name="mileage" ng-change="vModel19(fleetForm.mileage.$valid)" class="form-control col-12" placeholder="Mileage" ng-model="carMlg" required/>
+                        <span class="{{spanmodel19}}"></span>
+                    </div>
+
+                    <select class="form-control" id="selyear" ng-model="carYoMnf">
+                        <option ng-repeat="y in yearsArr">{{y.Year}}</option>
+                    </select>
+
+                    <select class="form-control" id="selpfr" ng-model="carPfR">
+                        <option>Avaliable</option>
+                        <option>Not avaliable</option>
+                    </select>
+                    <select class="form-control" id="selafr" ng-model="carAfR">
+                        <option>Avaliable</option>
+                        <option>Not avaliable</option>
+                    </select>
+
+                    <select class="form-control" id="selbranch" ng-model="carBrnch">
+                        <option ng-repeat="thisbranch in thisBranches">{{thisbranch.branches}}</option>
+                    </select>
+
+                    <div class="{{classmodel20}} vStyle">
+                        <input type="number" name="dcost" ng-change="vModel20(fleetForm.dcost.$valid)" class="form-control col-12" placeholder="DailyCost" ng-model="carDailyC" required />
+                        <span class="{{spanmodel20}}"></span>
+                    </div>
+                    <div class="{{classmodel21}} vStyle">
+                        <input type="number" name="ovcost" ng-change="vModel21(fleetForm.ovcost.$valid)" class="form-control col-12" placeholder="OverdueCost" ng-model="carOverCost" required />
+                        <span class="{{spanmodel21}}"></span>
+                    </div>
+
+                    <input type="button" value="Add new" id="btnUploadFile2" class="btn btn-primary" ng-click="addNewCar(carPic,carLisNum,carManfc,carModel,carGear,carMlg,carYoMnf,carPfR,carAfR,carBrnch,carDailyC,carOverCost,carCategory,
+                                   fleetForm.licenum.$valid,fleetForm.manufac.$valid,fleetForm.cmodel.$valid,fleetForm.mileage.$valid,fleetForm.dcost.$valid,fleetForm.ovcost.$valid)"/>
+                    <input type="button" value="Clear" class="btn btn-primary" ng-click="clearTable()" />
+                </form>
+            </div>
+        </div>
+
+        <div class="col-10 col-sm-mobile" style=" float: right;">
+            <div class="col-sm-mobile AdsMDiv col-12 " id="contact" style="max-height: 500px; overflow:auto">
+
+                <table class="addressAD">
+                    <thead>
+                    <tr>
+                        <th>Picture*</th>
+                        <th>LicenseNumber</th>
+                        <th>Manufacturer</th>
+                        <th>Category</th>
+                        <th>Model</th>
+                        <th>Gear</th>
+                        <th>Mileage</th>
+                        <th>YearOfManufacture</th>
+                        <th>ProperForRent</th>
+                        <th>AvaliableForRent</th>
+                        <th>Branch</th>
+                        <th>DailyCost</th>
+                        <th>OverdueCost</th>
+                    </tr>
+                    </thead>
+                    <tbody class="hideMobile" ng-repeat="car in thisCars">
+                    <tr ng-click="editCar(car.Picture,car.LicenseNumber,car.Manufacturer,car.Category,car.Model,car.Gear,car.Mileage,car.YearOfManufacture,car.ProperForRent,
+                                car.AvaliableForRent,car.Branch,car.DailyCost,car.OverdueCost)">
+                        <th><img src="{{car.Picture}}" alt="pic" style="width: 80px; height: auto" /></th>
+
+                        <th>{{car.LicenseNumber}}</th>
+                        <th>{{car.Manufacturer}}</th>
+                        <th>{{car.Category}}</th>
+                        <th>{{car.Model}}</th>
+                        <th>{{car.Gear}}</th>
+                        <th>{{car.Mileage}}</th>
+                        <th>{{car.YearOfManufacture}}</th>
+                        <th>{{car.ProperForRent}}</th>
+                        <th>{{car.AvaliableForRent}}</th>
+                        <th>{{car.Branch}}</th>
+                        <th>{{car.DailyCost +'$'}}</th>
+                        <th>{{car.OverdueCost +'$'}}</th>
+                            
+                        <th><input type="button" value="Delete" class="btn btn-primary" ng-click="RemoveCar(car.Id,car.Picture,car.Model,car.LicenseNumber)" /></th>
+                        <th><input type="button" value="Update" id="fileUpDateCars"  class="btn btn-success" ng-click="UpdateCar(car.Id,carPic,carLisNum,carManfc,carModel,carGear,carMlg,carYoMnf,carPfR,carAfR,carBrnch,carDailyC,carOverCost,carCategory,
+                                            fleetForm.licenum.$valid,fleetForm.manufac.$valid,fleetForm.cmodel.$valid,fleetForm.mileage.$valid,fleetForm.dcost.$valid,fleetForm.ovcost.$valid)" /></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><!--Vehicles management-->
+<div class="container" ng-controller="serverErrorControler">
+    <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#ErrorsTrigger">Server Errors Log</button>
+    <div id="ErrorsTrigger" class="collapse col-12">
+        <div class="col-sm-mobile AdsMDiv col-12 " style="max-height: 300px; overflow:auto">
+            <table class="addressAD">
+                <thead>
+                    <tr>
+                        <th>Server-Error-Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="serverError in serverErrorLogs">
+                        <th>{{serverError.ErrorMsg}}</th>
+                        <th>{{serverError.Date}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div><!--Server Errors Log-->
+ 
+
+    <div ng-controller="settingsController">
+        <div class="modal " tabindex="-1" id="successModal1" data-ketboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="logInEnd()">
+                            &times;
+                        </button>
+                        <h4><img src="/images/icons/settings.png" />{{msgHeader}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Update Profile</label>
+                        <input style="float: left" type="file" id="fileUpload1" class="form-control col-9" placeholder="Picture" ng-model="usrPic" />
+                        <input style="float: right" type="button" value="Update" id="fileUpDate1" class="btn btn-success col-3" ng-click="UpdateUserPic()" />
+                        <form name="settingsForm">
+                            <div class="{{classmodel1}} vStyle">
+                                <input type="email" name="mail" ng-change="vModel1(settingsForm.mail.$valid)" class="form-control col-12" placeholder="Email" ng-model="usrMail" required />
+                            </div>
+                            <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#UserTrigger1">Change Password</button>
+                            <div id="UserTrigger1" class="collapse col-12">
+
+                                <div class="col-12" style=" float: left;">
+                                    <div class="form-group">
+                                        <div class="{{classmodel2}} vStyle">
+                                            <input type="text" name="uniquepass" ng-change="vModel2(settingsForm.uniquepass.$valid)" class="form-control col-12" placeholder="Unique pass" ng-model="uniqPass" required />
+                                            <span class="{{spanmodel2}}"></span>
+                                        </div>
+                                        <div class="{{classmodel3}} vStyle">
+                                            <input type="text" name="pass" ng-change="vModel3(settingsForm.pass.$valid)" class="form-control col-12" placeholder="Password" ng-model="Pass" required />
+                                            <span class="{{spanmodel3}}"></span>
+                                        </div>
+                                        <div class="{{classmodel4}} vStyle">
+                                            <input type="text" name="confpass" ng-change="vModel4(settingsForm.confpass.$valid)" class="form-control col-12" placeholder="Confirm Password" ng-model="confPass" required />
+                                            <span class="{{spanmodel4}}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input style="float: left" type="button" value="Change" id="fileUpDate2" class="btn btn-success " ng-click="ChangePass(usrMail,settingsForm.mail.$valid)" />
+                        <button style="float: left" type="button" data-dismiss="modal" class="btn btn-success col-5" >Close</button>
+                        <input style="float: right" type="button" value="Update" id="fileUpDate3" class="btn btn-success " ng-click="UpdatePass(uniqPass,Pass,confPass,settingsForm.uniquepass.$valid,settingsForm.pass.$valid,settingsForm.confpass.$valid)" />
+                    </div>
+
+                </div>
+                <div class="{{alertStatus}}" ng-hide="warningmsg" ng-model="errorMsg">
+                    <button type="button" class="close" ng-click="closeWarning()">
+                        &times;
+                    </button>
+                    <strong>Warning</strong> {{errorMsg}}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!--admin personal settings-->
+        
+</div>
+    <footer class="container-fluid text-center" id="feedback">
+        <center>&copy; Copyright 2017 Sergey Svanidze JBProject.</center>
+    </footer>
+</body>
+</html>

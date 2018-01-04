@@ -1,0 +1,41 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Oswald;
+    font-size: 17px;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 100;
+    line-height: 20.6px;
+   
+}
+
+p {
+    float: left;
+    text-align: left;
+    font-family: Oswald;
+    font-size: 17px;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 100;
+    line-height: 20.6px;
+}
+
+h2 {
+    margin: 1em 0 0.5em 0;
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #00caa6;
+    font-family: Oswald;
+    font-size: 17px;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 100;
+    line-height: 20.6px;
+}
+
+
+
+
+
+

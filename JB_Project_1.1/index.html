@@ -1,0 +1,513 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RentCar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="Style/indexStyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="JSlogic/indexJS.js"></script>
+
+    <script src="JSlogic/managerController.js"></script>
+    <style>
+        .vStyle {
+            margin: 0px;
+        }
+    </style>
+   
+</head>
+
+
+<body  ng-app="indexModule" class="gradient" >
+
+    <nav ng-controller="navControl" class="navbar navbar-inverse navigation" ng-init="checkCookie()">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand col-sm-logo col-logo" href="#"><img class="col-sm-logo" src="images/logo.png" style="padding: 0%;"/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="https://rentcar.sergeyprsv.com/index.html#" style="color: white">Home</a></li>
+                   
+                    <li class="{{class}} navigation" ng-mouseover="pcMode()"><span>About
+                            <a onclick="document.getElementById('cars').scrollIntoView();" class="MobilenavMenu">&nbsp;>Our brands</a>
+                            <a href="AboutUS.html" class="MobilenavMenu">&nbsp;>About us</a>
+                            <a href="UserAgreement.html" class="MobilenavMenu">&nbsp;>User agreement</a>  
+                        </span>
+                        <div class="dropdown-content"><!--check point-->
+                            <a href="#thisCars">Our Brands</a>
+                            <a href="/AboutUS.html" ng-click="redirectToAbout()">About Us</a>
+                            <a href="/UserAgreement.html">User agreement</a>
+                        </div>
+                    </li>
+                   
+                    <li class="{{class}} navigation" ng-mouseover="pcMode()"><span>Contact
+                            <a onclick="document.getElementById('cars').scrollIntoView();"  class="MobilenavMenu">&nbsp;> Branches</a>
+                            <a onclick="document.getElementById('contact').scrollIntoView();" class="MobilenavMenu">&nbsp;> Administration</a>
+                            <a onclick="document.getElementById('feedback').scrollIntoView();" class="MobilenavMenu">&nbsp;> Feedback</a>
+                        </span>
+                        <div class="dropdown-content">
+                            <a  href="#cars">Branches</a>
+                            <a  href="#map">Administration</a>
+                            <a  href="#map">Feedback</a>
+                        </div>
+                    </li>
+                    
+                    <li class="{{class}} navigation" ng-mouseover="pcMode()">
+                        <span>
+                            Cars
+                            <a class="MobilenavMenu" ng-click="OurCarsRent()">Rent Now</a>
+                        </span>
+                        <div class="dropdown-content">
+                            <a ng-click="OurCarsRent()">Rent Now</a>
+                        </div>
+                    </li>
+
+                    <li ng-hide="adminAccess" class="{{class}} navigation" ng-mouseover="pcMode()"><span>Personal
+                            <a class="MobilenavMenu" href="ReturnVehicle.html" >&nbsp;> Return vehicle</a>
+                            <a class="MobilenavMenu" href="ManagerOptions.html">&nbsp;> Manager options</a>
+                        </span>
+                        <div class="dropdown-content">
+                            <a href="ReturnVehicle.html" >Return vehicle</a>
+                            <a href="ManagerOptions.html">Manager options</a>
+                        </div>
+                    </li>
+           
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right login">
+                    <li class="{{class}} navigation" style="margin: 0px; {{styleeffect}}" ng-mouseover="pcMode()">
+                        <span class="{{class}} navigation">
+                            <a style="color: white;text-decoration: none" href="{{logref}}"><span class="{{glyphicon}}" ng-mouseover="pcMode()"></span><img ng-hide="logimg" class="userlogin"  src="{{pic}}" />&nbsp;{{loginbody}}</a>
+                            <a  class="MobilenavMenu" ng-click="Settings()" ng-hide="set">&nbsp;> Settings</a>
+                            <a class="MobilenavMenu" ng-click="MyOrders()" ng-hide="myorder">&nbsp;> My Orders</a>
+                            <a  class="MobilenavMenu" ng-click="logOut()" ng-hide="log">&nbsp;> Log-Out</a>
+                        </span>
+                        <div class="dropdown-content " style="margin-top: 0px;" ng-hide="hidedropmenu">
+                            <a href="#" ng-click="Settings()">Settings</a>
+                            <a href="#" ng-click="MyOrders()">My Orders</a>
+                            <a href="#" ng-click="logOut()" >Log-Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+         
+        </div>
+     
+</nav><!--Navigation Bar-->
+<div ng-controller="settingsController" ng-init="loadOrdersHistory()">
+    <div  class="modal " tabindex="-1" id="successModal1" data-ketboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="logInEnd()">
+                        &times;
+                    </button>
+                    <h4><img src="/images/icons/settings.png" />{{msgHeader}}</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Update Profile</label>
+                    <input style="float: left" type="file" id="fileUpload" class="form-control col-9" placeholder="Picture" ng-model="usrPic" />
+                    <input style="float: right" type="button" value="Update" id="fileUpDate1" class="btn btn-success col-3" ng-click="UpdateUserPic()" />
+                    <form name="settingsForm">
+                        <div class="{{classmodel1}} vStyle">
+                            <input type="email" name="mail" ng-change="vModel1(settingsForm.mail.$valid)" class="form-control col-12" placeholder="Email" ng-model="usrMail" required />
+                        </div>
+                        <button type="button" class="btn btn-info col-12" data-toggle="collapse" data-target="#UserTrigger">Change Password</button>
+                        <div id="UserTrigger" class="collapse col-12">
+
+                            <div class="col-12" style=" float: left;">
+                                <div class="form-group">
+                                    <div class="{{classmodel2}} vStyle">
+                                        <input type="text" name="uniquepass" ng-change="vModel2(settingsForm.uniquepass.$valid)" class="form-control col-12" placeholder="Unique pass" ng-model="uniqPass" required />
+                                        <span class="{{spanmodel2}}"></span>
+                                    </div>
+                                    <div class="{{classmodel3}} vStyle">
+                                        <input type="text" name="pass" ng-change="vModel3(settingsForm.pass.$valid)" class="form-control col-12" placeholder="Password" ng-model="Pass" required />
+                                        <span class="{{spanmodel3}}"></span>
+                                    </div>
+                                    <div class="{{classmodel4}} vStyle">
+                                        <input type="text" name="confpass" ng-change="vModel4(settingsForm.confpass.$valid)" class="form-control col-12" placeholder="Confirm Password" ng-model="confPass" required />
+                                        <span class="{{spanmodel4}}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input style="float: left" type="button" value="Change Password" id="fileUpDate2" class="btn btn-success" ng-click="ChangePass(usrMail,settingsForm.mail.$valid)" />
+                    <button style="float: left" type="button" data-dismiss="modal" class="btn btn-success" >Close</button>
+                    <input style="float: right" type="button" value="UpdatePassword" id="fileUpDate3" class="btn btn-success" ng-click="UpdatePass(uniqPass,Pass,confPass,settingsForm.uniquepass.$valid,settingsForm.pass.$valid,settingsForm.confpass.$valid)" />
+                </div>
+
+            </div>
+            <div class="{{alertStatus}}" ng-hide="warningmsg" ng-model="errorMsg">
+                <button type="button" class="close"  ng-click="closeWarning()">
+                    &times;
+                </button>
+                <strong>Warning</strong> {{errorMsg}}
+
+            </div>
+           
+        </div>
+          
+    </div>
+    <div class="modal " tabindex="-1" id="successModal2" data-ketboard="false" data-backdrop="static" >
+        <div class="modal-dialog modal-sm col-9 col-sm-mobile" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4><img src="/images/logo.png" style="width: 100px; height: auto" />My Orders History</h4>
+                </div>
+                <div class="modal-body AdsMDiv col-sm-mobile">
+                    <table class="addressAD col-12 col-sm-mobile" style="max-height: 500px">
+                        <tbody>
+                        <tr>
+                            <th>Username</th>
+                            <th>Car Picture</th>
+                          
+                                <th ng-hide="historyMobile">Licence number</th>
+                                <th ng-hide="historyMobile">Manufacturer</th>
+                                <th ng-hide="historyMobile">Model</th>
+                                <th ng-hide="historyMobile">Mileage</th>
+                                <th ng-hide="historyMobile">Year</th>
+                                <th ng-hide="historyMobile">Branch</th>
+                                <th ng-hide="historyMobile">Day Cost</th>
+                                <th ng-hide="historyMobile">Over Cost</th>
+                                <th ng-hide="historyMobile">Rented at</th>
+                                <th ng-hide="historyMobile">Declared return at</th>
+                                <th ng-hide="historyMobile">Returned at</th>
+                                <th ng-hide="historyMobile">Returned to Branch</th>
+                                <th ng-hide="historyMobile">Total payed</th>
+                            
+                        </tr>
+                        </tbody>
+                        <tbody ng-repeat="order in orderHistory">
+                        <tr >
+                            <th>{{order.Username}}</th>
+                            <th><img  src="{{order.Picture}}" alt="pic" style="width: {{valWidth}};height: auto"></th>
+                          
+                                <th ng-hide="historyMobile">{{order.LicenseNumber}}</th>
+                                <th ng-hide="historyMobile">{{order.Manufacturer}}</th>
+                                <th ng-hide="historyMobile">{{order.Model}}</th>
+                                <th ng-hide="historyMobile">{{order.Mileage}}</th>
+                                <th ng-hide="historyMobile">{{order.YearOfManufacture}}</th>
+                                <th ng-hide="historyMobile">{{order.Branch}}</th>
+                                <th ng-hide="historyMobile">{{order.DailyCost}}</th>
+                                <th ng-hide="historyMobile">{{order.OverdueCost}}</th>
+                                <th style="font-size: 10px" ng-hide="historyMobile">{{order.FromRentedDate}}</th>
+                                <th style="font-size: 10px" ng-hide="historyMobile">{{order.ToRentedDate}}</th>
+                                <th style="font-size: 10px" ng-hide="historyMobile">{{order.ActualReturnDate}}</th>
+                                <th ng-hide="historyMobile">{{order.ReturnedToBranch}}</th>
+                                <th ng-hide="historyMobile">{{order.FinalTotalCost}}</th>
+                           
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button style="float: right" type="button" data-dismiss="modal" class="btn btn-success" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mainDiv text-center">
+       
+           
+    <div class="col-sm-mobile col-12 carouselcontrol text-left">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+           
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active ">
+                    <img src="/images/1.jpg" alt="Image" style="width: 100%; height: auto;">
+
+                    <div class="carousel-caption">
+                        <h1 class="textSizingMob">
+                            Rent your car now<br/>
+                            And enjoy your best ever trip with RentCar.
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/images/2.jpg" alt="Image" style="width: 100%; height: auto;">
+                    <div class="carousel-caption">
+                        <h3 class="textSizingMob">Enjoy best Prices on market<br/>We offer a 100% money-back guarantee within 60 days of payment.
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/images/3.jpg" alt="Image" style="width: 100%; height: auto;">
+                    <div class="carousel-caption">
+                        <h3 class="textSizingMob">Enjoy full insurance <br/>Free of charge!
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div><!--Carousel Site Header-->
+            
+            
+    <div class="col-sm-mobile gradient StyleDivs col-12" >
+            <div class="col-sm-mobile gradient AboutCont col-8" id="grad">
+                <h1>WELCOME</h1>
+                <p>A car rental, hire car, or car hire agency is a company that rents automobiles for short periods of time, generally ranging from a few hours to a few weeks. It is often organized with numerous local branches (which allow a user to return a vehicle to a different location), and primarily located near airports or busy city areas and often complemented by a website allowing online reservations. Car rental agencies primarily serve people who require a temporary vehicle, for example those who do not own their own car, travelers who are out of town, or owners of damaged or destroyed vehicles who are awaiting repair or insurance compensation. Car rental agencies may also serve the self-moving industry needs, by renting vans or trucks, and in certain markets other types of vehicles such as motorcycles or scooters may also be offered. Alongside the basic rental of a vehicle, car rental agencies typically also offer extra products such as insurance, global positioning system (GPS) navigation systems, entertainment systems, mobile phones, portable WiFi and child safety seats.We specialize in exotic and luxury car rental. Whether you are looking for a Mercedes, a luxury SUVs, Jaguar convertible, Range Rover, BMW, Porsche, Cadillac, Bentley, Corvette, Hummer, Viper, or a conversion van, 15 passenger vans, a new hybrid or sport convertible car to rent, you have come to the right place. We carry only the newest models of exotic cars available and keep our rental cars in new condition all with very low mileage.</p>
+            </div>
+            <div class="col-sm-mobile AboutImg col-4">
+                <img src="images/about.png"/>
+            </div>
+    </div><!--About Section-->
+           
+  
+    <div class="col-sm-mobile AboutImg col-12" id="thisCars">          
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+               
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active " ng-include="'/carsInfoDocuments/audi_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/bmw_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/fiat_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/ford_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/honda_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/hyundai1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/jeep_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/kia1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/mazda1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/mercedes1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/mini1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/mitsubishi1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/nissan_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/opel_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/skoda1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/subaru1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/toyota1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/volkswagen1_info.html'"></div>
+                <div class="item  " ng-include="'/carsInfoDocuments/volvo_info.html'"></div>
+
+                   
+            </div>
+            <!--Left and right controls-->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"></a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"></a>
+        </div>           
+    </div>     <!--Vehicles info Section-->
+
+          
+    <div ng-controller="indexControl" class="col-sm-mobile " style="background: #555555" >
+            <div  class="col-sm-mobile gradient  AboutCont col-12">
+            <h1>BRANCHES</h1>
+                <div class="AdsMDiv">
+                    <table class="address">
+                        <thead>
+                        <tr>
+                            <th>Branches</th>
+                            <th>Address</th>
+                            <th ng-hide="branchMobile">Latitude</th>
+                            <th ng-hide="branchMobile">Longitude</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="thisbranch in thisBranches" ng-click="gotoAddress(thisbranch.latitude,thisbranch.longitude)">
+                            <th>{{thisbranch.branches}}</th>
+                            <th>{{thisbranch.address}}</th>
+                            <th ng-hide="branchMobile" ng-model="latmodel">{{thisbranch.latitude}}</th>
+                            <th ng-hide="branchMobile" ng-model="lngmodel">{{thisbranch.longitude}}</th>
+                            <th ng-style="StatusStyle">{{status}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="StyleDivs srchBar">
+                    <div class="input-group StyleDivs">
+                        <input type="text" class="form-control control" name="search_txt" placeholder="Search branch here" ng-style="contentStyle" ng-model="content" id="searchBranch" ng-keypress="enterpressalert($event,content);" ng-click="srch()">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default defbtn" type="submit" name="search_bt" value="Search" ng-click="findbrnch(content)" id="evaluatePresskey"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </div><!--search bar div-->
+            </div>
+            <div id="map" class="col-sm-mobile AboutImg col-12" style="background: transparent">
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATzgtUZ525p0_678FHfmrw9hLWWm1YDIM&callback=initMap">
+                </script>
+
+            </div>
+        </div><!--Branches Section-->
+        
+      <div ng-controller="ContactControl">
+            <div class="col-sm-mobile  col-12 " id="contact">
+
+                <div class="col-sm-mobile gradient  AboutImg col-12" style="padding: 0% 0% 0% 0%">
+                    <div class="col-sm-mobile StyleDivs ContactCL col-3">
+                        <img src="images/business_admin.jpg" alt="about img" style="width: 100%; height: auto;" />
+                    </div>
+                    <div class="AdsMDiv  col-sm-mobile col-9" id="AdDiv">
+                        <h1>CONTACTS</h1>
+                        <table class="addressAD">
+                            <thead>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Contact name</th>
+                                    <th>Tel</th>
+                                    <th>Fax</th>
+                                    <th>Mail</th>
+                                </tr>
+                            </thead>
+                            <tbody class="hideMobile" ng-repeat="recipient in mailRecipients">
+                                <tr >
+                                    <th>{{recipient.Department}}</th>
+                                    <th>{{recipient.ContactName}}</th>
+                                    <th>{{recipient.Tel}}</th>
+                                    <th>{{recipient.Fax}}</th>
+                                    <th>{{recipient.Mail}}  <a ng-click="sendToRecipient(recipient.Mail)"><img src="/images/icons/mail.png" alt="mailicon" /></a></th>
+                      
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!--Contact us Section-->
+            <div class="col-sm-mobile col-12">
+
+                <div class="col-sm-mobile AboutCont col-12" id="grad">
+                    <h1>CONTACT US</h1>
+                    <form name="mailForm" action="">
+
+                        <div class="col-7 txtareas col-sm-mobile" style="float: left">
+                            <div class="{{classmodel1}} vStyle">
+                                <input type="email" name="from" ng-change="vModel1(mailForm.from.$valid)" class="form-control" id="usr" placeholder="From" ng-model="From" required />
+                                <span class="{{spanmodel1}} col-2"></span>
+                            </div>
+                            <div class="{{classmodel2}} vStyle">
+                                <input type="email" name="to" ng-change="vModel2(mailForm.to.$valid)" class="form-control" id="usr" placeholder="To" ng-model="To" required disabled/>
+                                <span class="{{spanmodel2}} col-2"></span>
+                            </div>
+                            <div class="{{classmodel3}} vStyle">
+                                <input type="text" name="subject" ng-change="vModel3(mailForm.subject.$valid)" class="form-control" id="usr" placeholder="Subject" ng-model="Subject" required />
+                                <span class="{{spanmodel3}} col-2"></span>
+                            </div>
+                            </div>
+
+                        <div class="col-5 col-sm-mobile vStyle" style="float: right">
+                            <textarea class="form-control txtareas  mobileArea" placeholder="Mail" rows="5" id="comment" ng-model="Mail" style="min-height: 120px"></textarea>
+                        </div>
+                        <div class="col-12 col-sm-mobile">
+
+                            <div class="col-1 Send_Refresh_btn Send_Refresh_moble_send vStyle">
+                                <button type="button" class="btn btn-success " ng-click="submitMail(mailForm.from.$valid,mailForm.to.$valid,mailForm.subject.$valid,From,To,Subject,Mail)">&nbsp;&nbsp;Send&nbsp;&nbsp;</button>
+                            </div>
+                            <div class="col-11 Send_Refresh_btn Send_Refresh_moble_refresh vStyle">
+                                <button type="button" class="btn btn-info" ng-click="btnRefresh()">Refresh</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div><!--Feedback Section-->
+            <div class="modal " tabindex="-1" id="successModal3" data-ketboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" ng-click="logInEnd()">
+                                &times;
+                            </button>
+                            <h4><img src="/images/logo.png" style="width: 80px; height: auto" />{{msgHeader}}</h4>
+                        </div>
+                        <div class="modal-body">
+                           
+                         
+                            <h4>{{msg1}}</h4><br/>
+                            <h4>{{msg2}} </h4>
+                        </div>
+                    </div>
+                        <button type="button" class="close">
+                            &times;
+                        </button>
+                </div>
+
+            </div>
+        </div> <!--contact us + feedback-->       
+       
+    <div class="col-sm-mobile AboutImg col-12" style="background: white" >
+                <ul class="col-12 Row col-sm-mobile">
+                    <li>
+                        <img src="images/logo.png" alt="logo" style="width: 10%; height: 10%" />
+                        <h5 style="color: black">
+                            RentCar is a .NET develope course project in JohnBryce HiTec college, <br />the project coded by Sergey Svanidze.<br />
+                            Project RentCar is a car rental website Using HTML , CSS , JQuery , Bootstrap, Web Api 2, AngularJS technologies.<br />© 2016-2017 RentCar.com
+                        </h5>
+                    </li>
+                    <li  style="text-decoration: none; " class="links">
+                        <span class="Column">
+                            <a href="https://www.google.co.il"><img src="/images/icons/google.png" alt="google"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.facebook.com/"><img src="/images/icons/facebook.png" alt="falcebook logo"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.twitter.com/"><img src="/images/icons/twitter.png" alt="twitt logo"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.youtube.com/"><img src="/images/icons/youtube.png" alt="youtube logo"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.pinterest.com/"><img src="/images/icons/Pinterest.png" alt="Pinterest logo"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.linkedin.com/"><img src="/images/icons/LinkedIn.png" alt="LinkedIn logo"/></a>
+                        </span>
+                        <span class="Column">
+                            <a href="https://www.instagram.com/"><img src="/images/icons/Instagram.png" alt="Instagram logo"/></a>
+                        </span>
+                    </li>
+                </ul>
+            </div><!--Bottom navigation Section side-->
+              
+
+    </div>
+    
+
+    <footer class="container-fluid text-center" id="feedback">
+        <center>&copy; Copyright 2017 Sergey Svanidze JBProject.</center>
+    </footer>
+</body>
+</html>

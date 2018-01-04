@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RentCarDatabaseModelStoreContainer" CdmEntityContainer="RentCarDatabaseEntities1">
+    <EntitySetMapping Name="RentCarBranches">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarBranch">
+        <MappingFragment StoreEntitySet="RentCarBranches">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="branches" ColumnName="branches" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarContacts">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarContact">
+        <MappingFragment StoreEntitySet="RentCarContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarUserDBs">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarUserDB">
+        <MappingFragment StoreEntitySet="RentCarUserDB">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarNewVehiclesDBs">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarNewVehiclesDB">
+        <MappingFragment StoreEntitySet="RentCarNewVehiclesDB">
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="OverdueCost" ColumnName="OverdueCost" />
+          <ScalarProperty Name="DailyCost" ColumnName="DailyCost" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="AvaliableForRent" ColumnName="AvaliableForRent" />
+          <ScalarProperty Name="ProperForRent" ColumnName="ProperForRent" />
+          <ScalarProperty Name="YearOfManufacture" ColumnName="YearOfManufacture" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="Gear" ColumnName="Gear" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarRentedCars">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarRentedCar">
+        <MappingFragment StoreEntitySet="RentCarRentedCars">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserPicture" ColumnName="UserPicture" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="ReturnToBranch" ColumnName="ReturnToBranch" />
+          <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+          <ScalarProperty Name="YearOFManufacture" ColumnName="YearOFManufacture" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+          <ScalarProperty Name="OverdueCost" ColumnName="OverdueCost" />
+          <ScalarProperty Name="DailyCost" ColumnName="DailyCost" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarUsersRentHistories">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarUsersRentHistory">
+        <MappingFragment StoreEntitySet="RentCarUsersRentHistory">
+          <ScalarProperty Name="FinalTotalCost" ColumnName="FinalTotalCost" />
+          <ScalarProperty Name="ReturnedToBranch" ColumnName="ReturnedToBranch" />
+          <ScalarProperty Name="ActualReturnDate" ColumnName="ActualReturnDate" />
+          <ScalarProperty Name="ToRentedDate" ColumnName="ToRentedDate" />
+          <ScalarProperty Name="FromRentedDate" ColumnName="FromRentedDate" />
+          <ScalarProperty Name="OverdueCost" ColumnName="OverdueCost" />
+          <ScalarProperty Name="DailyCost" ColumnName="DailyCost" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="YearOfManufacture" ColumnName="YearOfManufacture" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RentCarServerErrorsLogs">
+      <EntityTypeMapping TypeName="RentCarDatabaseModel.RentCarServerErrorsLog">
+        <MappingFragment StoreEntitySet="RentCarServerErrorsLog">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ErrorMsg" ColumnName="ErrorMsg" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

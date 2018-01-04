@@ -1,0 +1,577 @@
+﻿* {
+    margin: 0%;
+    padding: 0%;
+}
+
+ div * {
+    padding: 0%;
+}
+
+h1 {
+    color: white;
+    font-family: Oswald;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 100;
+
+    
+}
+
+
+
+
+
+.userlogin {
+ 
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+img * {
+    width: 100%;
+    height: auto;
+}
+
+body {
+     background: #555555;
+ }
+
+ul {
+    list-style-type: none;
+}
+
+
+/*bootstrap GRID*/
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+/*bootstrap GRID*/
+
+
+.StyleDivs div {
+    background: #555555;
+    color: white;
+}
+
+.col-logo {
+    padding: 0%;
+}
+
+.carouselcontrol {
+    width: 100%;
+    height: auto;
+    padding: 0%;
+}
+
+.mainDiv {
+    padding: 0%;
+}
+
+.AboutCont, .AboutImg {
+    padding: 0%;
+   
+    
+}
+
+.AboutImg {
+    float: right;
+
+}
+
+.AboutImg img {
+    float: right;
+    width: 100%;
+    height: auto;
+}
+
+.AboutCont {
+    
+    float: left;
+    padding: 0% 0% 1.55% 0%;
+}
+
+.ContactCL {
+
+    float: left;
+    padding: 0% 0% 0% 0%;
+}
+
+ul.AboutCont {
+    float: left;
+}
+
+.Row {
+    display: table;
+    margin: 0px;
+    z-index: 1;
+    border: 0px;
+    padding: 0% 10%;
+}
+
+.Column {
+    display: table-cell;
+    z-index: 0;
+    filter: grayscale(100%);
+    padding: 0% 4%;
+  
+   
+}
+
+.Column:hover {
+        filter: grayscale(0%);
+
+    }
+
+
+
+
+#map {
+    float: left;
+    min-height: 350px;
+    max-height: 100%;
+    background-color: grey;
+}/*google map*/
+
+
+
+
+
+/*branches adress*/
+.AdsMDiv div {
+    background: gray; /* For browsers that do not support gradients */
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Fx 3.6 to 15 */
+    background: -moz-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* Standard syntax */
+    background: linear-gradient(to right, black,#555555,gray,gray,gray,#555555,black);
+    color: white;
+    overflow: auto;
+}
+
+
+.AdsMDiv th {
+    background: #555555;
+    color: white;
+    width: 5%;
+    height: 100%;
+    margin: 0px 10px;
+   
+    font-family: Oswald;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 100;
+    line-height: 20.6px;
+}
+
+.address {
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-collapse: collapse;
+    margin-left: 5px;
+}
+
+.address tbody tr:hover {
+        opacity: 0.4;
+        margin: 0px;
+        padding: 0px;
+        cursor: pointer;
+    }
+
+.address tr {
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+#bottom {
+    border: none;
+}
+
+#cityAddress {
+    text-align: left;
+}
+/*branches adress*/
+
+
+
+
+
+
+
+
+
+/*admin contact*/
+#AdDiv {
+    float: left;
+   
+}
+
+#adminImg {
+    float: left;
+    overflow: visible;
+}
+
+#AdDiv #adminImg {
+    display: inline-block;
+}
+
+#adminImg img {
+    width: 100%;
+    height: auto;
+  
+}
+
+
+
+.addressAD {
+   
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-collapse: collapse;
+}
+
+.addressAD tbody a:hover {
+        opacity: 0.4;
+        cursor: pointer;
+        background-color: cornflowerblue;
+    }
+
+.addressAD tbody a {
+        float: right;
+    }
+
+.addressAD tr {
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+.txtareas input[type="email"],.txtareas input[type="text"] {
+        margin: 1% 0% 1% 5%;
+        width: 90%
+    }
+
+.textarea {
+    width: 90%;
+    margin: 1% 5% 1% -3%;
+}
+
+.Send_Refresh_btn {
+    float: right;
+    margin: 2% 0%;
+    width: 10%;
+}
+/*admin contact*/
+
+
+
+
+
+
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    z-index: 1;
+}
+
+
+
+    .navbar li {
+        border-top: 3px solid transparent;
+    }
+
+
+    .navbar li:hover {
+        border-top: 3px solid white;
+        cursor: pointer;
+    }
+
+    .navbar li a span:hover {
+        color: red;
+        cursor: pointer;
+    }
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: 450px;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: black;
+    color: white;
+    padding: 15px;
+}
+
+
+
+
+
+
+.MobilenavMenu  {
+    display: none;
+}
+
+
+.navigation span {   
+    color: white;
+}
+
+li.navigation  {
+    padding: 15px 15px 15px 15px ;
+   
+}
+
+.moblilelogout a {
+    display: none;
+}
+
+/*MOBILE VERSION*/
+@media screen and (max-width: 767px) {
+    .row.content {
+        height: auto;
+    }
+
+    .col-sm-mobile {
+        width: 100%;
+        padding: 0%;
+    }
+
+    .col-sm-logo {
+        width: 40%;
+    }
+
+    .Send_Refresh_moble_send {
+        float: right;
+        margin: 1% 1%;
+        width: 25%;
+    }
+
+    .Send_Refresh_moble_refresh {
+        float: left;
+        margin: 1% 1%;
+        width: 25%;
+    }
+
+    textarea {
+        margin: 1% 5% 1% 0%;
+        width: 90%
+    }
+
+    .hideMobile th {
+        font-size: 10px;
+    }
+
+    .textSizingMob {
+        font-size: 10px;
+    }
+
+    span:hover .MobilenavMenu {
+        display: inline;
+        text-decoration: none;
+        color: white;
+    }
+
+    .MobilenavMenu span:hover {
+        color: red;
+        text-decoration: none;
+    }
+
+   .navigation span a:hover {
+       color: red;
+   }
+
+    .links {
+        margin: 0% 25% 0% 0%;
+        padding: 0% 20% 0% 0%;
+        float: left;
+    }
+
+    .mobileArea {
+        width: 90%;
+        margin: 1% 5% 0% 5%
+    }
+
+    .moblilelogout  a{
+        display: inline-block;
+    }
+
+    .desktoplogout {
+        display: none;
+    }
+
+
+ 
+   
+   
+}
+/*MOBILE VERSION*/
+
+.col-3-pc {
+    margin: 2% 32.5%;
+    width: 35%;
+}
+
+
+.txtareas textarea {
+    margin: 0% 0% 2% 0%;
+    
+}
+/*DROPDOWN NAV MENU*/
+.dropbtn li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.dropdown {
+    display: inline-block;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: dimgrey;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    min-width: 160px;
+    margin: 15px -15px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+        color: black;
+        border-top: 1px solid black;
+        padding: 12px 0px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+  
+    }
+
+.dropdown-content a:hover {
+        opacity: 0.7;
+        border-top: 1px solid white;
+        background: gray; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(white, black); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(white, black); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(white, black); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(white, black);
+        cursor: pointer;
+    }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+
+
+/*DROPDOWN NAV MENU*/
+
+
+
+
+.bottomnav {
+    background: white;
+    text-decoration: none;
+}
+
+.bottomnav a {
+        text-decoration: none;
+
+        cursor: pointer;   
+    }
+
+.links {
+    margin: 0% 0% 0% 25%;
+
+}
+
+
+.signin {
+    min-width: 400px;
+    background: white;
+    z-index: 1;
+}
+
+
+
+#grad {
+    background: gray; /* For browsers that do not support gradients */
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Fx 3.6 to 15 */
+    background: -moz-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* Standard syntax */
+    background: linear-gradient(to right, black,#555555,gray,gray,gray,#555555,black);
+}
+
+
+
+.gradient {
+    background: gray; /* For browsers that do not support gradients */
+    /* For Safari 5.1 to 6.0 */
+    background: -webkit-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Opera 11.1 to 12.0 */
+    background: -o-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* For Fx 3.6 to 15 */
+    background: -moz-linear-gradient(left,black,#555555,gray,gray,gray,#555555,black);
+    /* Standard syntax */
+    background: linear-gradient(to right, black,#555555,gray,gray,gray,#555555,black);
+}
+
